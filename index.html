@@ -4,112 +4,345 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>HIRX | High Impact Revolution X</title>
+  <meta name="description" content="HIRX — High Impact Revolution X. An independent digital project exploring community, creativity and technology.">
+
   <style>
-    * { box-sizing: border-box; }
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
       background: #050914;
       color: #f4f7ff;
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
     }
+
+    :root {
+      --blue: #168cff;
+      --light-blue: #55b4ff;
+      --muted: #aebbd0;
+      --border: #172943;
+    }
+
+    /* NAVIGATION */
+
     header {
-      padding: 24px 8%;
+      width: 100%;
+      padding: 22px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #17243b;
+      border-bottom: 1px solid var(--border);
+      background: rgba(5, 9, 20, 0.92);
+      position: relative;
+      z-index: 10;
     }
-    .brand { font-size: 25px; font-weight: 900; letter-spacing: 4px; }
-    .brand span { color: #168cff; }
-    nav a { color: #aebbd0; text-decoration: none; margin-left: 22px; }
+
+    .brand {
+      font-size: 27px;
+      font-weight: 900;
+      letter-spacing: 5px;
+    }
+
+    .brand span {
+      color: var(--blue);
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--blue);
+    }
+
+    /* HERO */
+
     .hero {
-      min-height: 75vh;
+      min-height: 82vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 70px 20px;
-      background: radial-gradient(ellipse at center, #102c54 0%, #050914 65%);
+      padding: 80px 20px;
+      background:
+        radial-gradient(ellipse at center, #102d55 0%, #081426 40%, #050914 75%);
+      position: relative;
     }
-    .symbol {
-      width: 110px;
-      height: 110px;
-      border: 2px solid #168cff;
-      border-radius: 28px;
-      display: grid;
-      place-items: center;
-      color: #168cff;
-      font-size: 38px;
+
+    .logo {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 32px;
+      filter: drop-shadow(0 0 28px #168cff66);
+    }
+
+    h1 {
+      font-size: clamp(65px, 12vw, 115px);
       font-weight: 900;
-      box-shadow: 0 0 45px #087cff55;
-      transform: rotate(-5deg);
-      margin-bottom: 30px;
+      letter-spacing: 12px;
+      line-height: 1;
     }
-    h1 { font-size: clamp(55px, 10vw, 100px); margin: 0; letter-spacing: 8px; }
-    h1 span { color: #168cff; }
-    .subtitle { color: #aebbd0; font-size: 19px; margin: 18px 0 30px; }
+
+    h1 span {
+      color: var(--blue);
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 15px;
+      letter-spacing: 6px;
+      margin-top: 22px;
+      margin-bottom: 38px;
+    }
+
     .button {
       display: inline-block;
-      padding: 14px 28px;
-      border: 1px solid #168cff;
+      padding: 15px 32px;
+      border: 1px solid var(--blue);
       border-radius: 8px;
       color: white;
+      background: #087cff20;
       text-decoration: none;
-      background: #087cff22;
+      font-weight: bold;
+      transition: 0.3s;
     }
-    section { padding: 65px 8%; text-align: center; }
-    section h2 { color: #168cff; letter-spacing: 2px; }
-    section p { color: #aebbd0; line-height: 1.8; max-width: 650px; margin: 15px auto; }
-    .notice {
-      margin: 25px auto;
+
+    .button:hover {
+      background: var(--blue);
+      box-shadow: 0 0 30px #168cff66;
+      transform: translateY(-3px);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 90px 8%;
+      text-align: center;
+    }
+
+    section h2 {
+      color: var(--blue);
+      font-size: 30px;
+      letter-spacing: 4px;
+      margin-bottom: 25px;
+    }
+
+    section p {
+      color: var(--muted);
+      line-height: 1.9;
       max-width: 700px;
-      padding: 18px;
-      border: 1px solid #263957;
+      margin: 12px auto;
+      font-size: 16px;
+    }
+
+    .roadmap-item {
+      max-width: 650px;
+      margin: 15px auto;
+      padding: 20px;
+      background: #0b1424;
+      border: 1px solid var(--border);
       border-radius: 10px;
+      color: #dce8fa;
+      text-align: left;
+      transition: 0.3s;
+    }
+
+    .roadmap-item:hover {
+      border-color: var(--blue);
+      transform: translateY(-3px);
+    }
+
+    .roadmap-item span {
+      color: var(--blue);
+      font-weight: bold;
+      margin-right: 12px;
+    }
+
+    /* NOTICE */
+
+    .notice {
+      margin: 20px auto 70px;
+      max-width: 750px;
+      padding: 25px;
+      border: 1px solid #263957;
+      border-radius: 12px;
       color: #bdc9dc;
       background: #0b1424;
-      line-height: 1.7;
+      line-height: 1.8;
+      text-align: center;
     }
-    footer { text-align: center; padding: 28px; color: #72819a; border-top: 1px solid #17243b; }
+
+    .notice strong {
+      color: var(--blue);
+      letter-spacing: 2px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      color: #72819a;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+      header {
+        padding: 20px 5%;
+      }
+
+      .brand {
+        font-size: 22px;
+      }
+
+      nav {
+        gap: 14px;
+      }
+
+      nav a {
+        font-size: 12px;
+      }
+
+      .logo {
+        width: 145px;
+        height: 145px;
+      }
+
+      .subtitle {
+        font-size: 11px;
+        letter-spacing: 3px;
+      }
+
+      section {
+        padding: 65px 7%;
+      }
+    }
   </style>
 </head>
+
 <body>
+
+  <!-- HEADER -->
+
   <header>
     <div class="brand">HIR<span>X</span></div>
-    <nav><a href="#about">About</a><a href="#roadmap">Roadmap</a></nav>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#roadmap">Roadmap</a>
+    </nav>
   </header>
 
+  <!-- MAIN HERO -->
+
   <main>
+
     <div class="hero">
-      <div class="symbol">HX</div>
+
+      <img
+        src="hirx-logo.png"
+        alt="HIRX Logo"
+        class="logo"
+      >
+
       <h1>HIR<span>X</span></h1>
-      <p class="subtitle">HIGH IMPACT REVOLUTION X</p>
-      <a class="button" href="#about">Discover the project</a>
+
+      <p class="subtitle">
+        HIGH IMPACT REVOLUTION X
+      </p>
+
+      <a class="button" href="#about">
+        DISCOVER HIRX
+      </a>
+
     </div>
+
+    <!-- ABOUT -->
 
     <section id="about">
+
       <h2>ABOUT HIRX</h2>
-      <p>HIRX is an independent digital project exploring community, creativity and technology. Its identity is built around ambition, innovation and a bold electric-blue visual style.</p>
+
+      <p>
+        HIRX — High Impact Revolution X — is an independent
+        digital project exploring community, creativity and
+        technology.
+      </p>
+
+      <p>
+        Built around ambition, innovation and a bold electric-blue
+        identity, HIRX represents a new digital concept.
+      </p>
+
     </section>
+
+    <!-- ROADMAP -->
 
     <section id="roadmap">
+
       <h2>PROJECT ROADMAP</h2>
-      <p>01 — Brand identity and concept</p>
-      <p>02 — Public project documentation</p>
-      <p>03 — Educational research and development</p>
+
+      <div class="roadmap-item">
+        <span>01</span>
+        Brand identity and concept
+      </div>
+
+      <div class="roadmap-item">
+        <span>02</span>
+        Public project documentation
+      </div>
+
+      <div class="roadmap-item">
+        <span>03</span>
+        Educational research and development
+      </div>
+
     </section>
 
+    <!-- PROJECT NOTICE -->
+
     <div class="notice">
-      <strong>DEMO PROJECT NOTICE</strong><br>
-      This website is for informational and educational purposes only.
-      HIRX is not being offered for sale here. No investment or financial
-      return is promised.
+
+      <strong>DEMO PROJECT NOTICE</strong>
+
+      <p>
+        This website is for informational and educational
+        purposes only. HIRX is not being offered for sale here.
+        No investment or financial return is promised.
+      </p>
+
     </div>
+
   </main>
 
-  <footer>© 2026 HIRX. All rights reserved.</footer>
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 HIRX — HIGH IMPACT REVOLUTION X
+  </footer>
+
 </body>
 </html>
-
